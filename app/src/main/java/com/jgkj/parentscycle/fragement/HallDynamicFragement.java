@@ -15,6 +15,7 @@ import com.android.volley.RequestQueue;
 import com.jgkj.parentscycle.R;
 import com.jgkj.parentscycle.activity.AnnouncementDetailActivity;
 import com.jgkj.parentscycle.activity.DynamicContentActivity;
+import com.jgkj.parentscycle.activity.MainActivity;
 import com.jgkj.parentscycle.adapter.HallDynamicAdapter;
 import com.jgkj.parentscycle.bean.AnnouncementListItem;
 import com.jgkj.parentscycle.bean.HallDynamicInfo;
@@ -34,7 +35,7 @@ import butterknife.OnClick;
 /**
  * Created by chen on 16/7/9.
  */
-public class HallDynamicFragement extends Fragment implements View.OnClickListener{
+public class HallDynamicFragement extends Fragment implements View.OnClickListener,HallDynamicAdapter.SetGoodsListener {
     @Bind(R.id.hall_dynamic_frgement_listview)
     ListView mListView;
 
@@ -78,6 +79,7 @@ public class HallDynamicFragement extends Fragment implements View.OnClickListen
         dataList = new ArrayList<AnnouncementListItem>();
 
         HallDynamicAdapter hallDynamicAdapter = new HallDynamicAdapter(view.getContext(),dataList);
+        hallDynamicAdapter.setGoodListener(this);
         mListView.setAdapter(hallDynamicAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -142,7 +144,12 @@ public class HallDynamicFragement extends Fragment implements View.OnClickListen
 
     public void setDataList(List<AnnouncementListItem> sourceData) {
         HallDynamicAdapter hallDynamicAdapter = new HallDynamicAdapter(this.getContext(),sourceData);
+        hallDynamicAdapter.setGoodListener(this);
         mListView.setAdapter(hallDynamicAdapter);
     }
 
+    @Override
+    public void hadSetGoodsListener(AnnouncementListItem hallDynamicInfo) {
+        ((MainActivity)this.getActivity()).requestSetGood(hallDynamicInfo.getAnnounid());
+    }
 }

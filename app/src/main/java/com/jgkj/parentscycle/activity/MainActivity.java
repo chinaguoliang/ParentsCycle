@@ -23,6 +23,7 @@ import com.jgkj.parentscycle.R;
 import com.jgkj.parentscycle.bean.AnnouncementListInfo;
 import com.jgkj.parentscycle.bean.AnnouncementListItem;
 import com.jgkj.parentscycle.bean.BabyDocumentListInfo;
+import com.jgkj.parentscycle.bean.SetLikeInfo;
 import com.jgkj.parentscycle.bean.VideoControlTImeItem;
 import com.jgkj.parentscycle.bean.VideoControlTimeInfo;
 import com.jgkj.parentscycle.fragement.HallPublishMenuFragment;
@@ -36,6 +37,8 @@ import com.jgkj.parentscycle.global.ConfigPara;
 import com.jgkj.parentscycle.json.AnnouncementListPaser;
 import com.jgkj.parentscycle.json.GetVideoControlTimeBySchoolIdPaser;
 import com.jgkj.parentscycle.json.ModifyPassByOldPassPaser;
+import com.jgkj.parentscycle.json.ResetPasswordPaser;
+import com.jgkj.parentscycle.json.SetLikeInfoPaser;
 import com.jgkj.parentscycle.json.TeacherInfoLIstPaser;
 import com.jgkj.parentscycle.net.NetBeanSuper;
 import com.jgkj.parentscycle.net.NetListener;
@@ -286,6 +289,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,N
                 UtilTools.toVideoModule(this, Volley.newRequestQueue(this));
                 ToastUtil.showToast(this, nbs.getMsg(), Toast.LENGTH_SHORT);
             }
+        } else if (nbs.obj instanceof SetLikeInfo) {
+            if (nbs.isSuccess()) {
+
+            } else {
+
+            }
+
+            ToastUtil.showToast(this, nbs.getMsg(), Toast.LENGTH_SHORT);
         }
     }
 
@@ -343,5 +354,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,N
         requestData.put("schoolid", ConfigPara.SCHOOL_ID);  //登录时ID
         GetVideoControlTimeBySchoolIdPaser lp = new GetVideoControlTimeBySchoolIdPaser();
         NetRequest.getInstance().requestTest(mQueue, this, BgGlobal.GET_VIDEO_CONTROL_DATA_BY_SCHOOL_ID, requestData, lp);
+    }
+
+    public void requestSetGood(String id) {
+        showProgressDialog();
+        HashMap<String, String> requestData = new HashMap<String, String>();
+        requestData.put("wbid", id);
+        requestData.put("osid",UserInfo.loginInfo.getInfo().getTmpinfoid());
+        requestData.put("role","1");
+        requestData.put("attype","1"); //1：公告 2、宝宝秀 3：父母圈 4: 某个评论
+        SetLikeInfoPaser lp = new SetLikeInfoPaser();
+        NetRequest.getInstance().request(mQueue, this,
+                BgGlobal.SET_GOOD, requestData, lp);
     }
 }

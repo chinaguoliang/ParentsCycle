@@ -20,6 +20,13 @@ import java.util.List;
  */
 public class HallDynamicAdapter extends BaseAdapter{
 
+    public interface SetGoodsListener {
+        public void hadSetGoodsListener(AnnouncementListItem hallDynamicInfo);
+    }
+    private SetGoodsListener mSetGoodsListener;
+    public void setGoodListener(SetGoodsListener listener) {
+        mSetGoodsListener = listener;
+    }
 
     private List<AnnouncementListItem> contentData;
     private Context mContext;
@@ -27,6 +34,8 @@ public class HallDynamicAdapter extends BaseAdapter{
         contentData = data;
         mContext = context;
     }
+
+
 
     @Override
     public int getCount() {
@@ -58,16 +67,24 @@ public class HallDynamicAdapter extends BaseAdapter{
             holder.bigIconIv = (ImageView)convertView.findViewById(R.id.hall_dynamic_frgement_list_item_bg_icon_iv);
             holder.contentTv = (TextView)convertView.findViewById(R.id.hall_dynamic_frgement_list_item_content_tv);
             holder.titleTv = (TextView)convertView.findViewById(R.id.hall_dynamic_frgement_list_item_title_tv);
+            holder.setGoodTv = (TextView)convertView.findViewById(R.id.hall_dynamic_frgement_list_item_set_good_tv);
         } else {
             holder = (HallMainChannelViewHolder) convertView.getTag();
         }
 
 
-        AnnouncementListItem hallDynamicInfo = contentData.get(position);
+        final AnnouncementListItem hallDynamicInfo = contentData.get(position);
         holder.nameTv.setText(hallDynamicInfo.getOspersion());
         holder.timeTv.setText(hallDynamicInfo.getCreatetime());
         holder.contentTv.setText(hallDynamicInfo.getAnnouncement());
         holder.titleTv.setText(hallDynamicInfo.getTitle());
+        holder.setGoodTv.setText(hallDynamicInfo.getDznum());
+        holder.setGoodTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSetGoodsListener.hadSetGoodsListener(hallDynamicInfo);
+            }
+        });
         return convertView;
     }
 
@@ -78,5 +95,6 @@ public class HallDynamicAdapter extends BaseAdapter{
         ImageView iconIv;
         ImageView bigIconIv;
         TextView titleTv;
+        TextView setGoodTv;
     }
 }
