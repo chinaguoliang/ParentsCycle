@@ -152,4 +152,9 @@ public class HallDynamicFragement extends Fragment implements View.OnClickListen
     public void hadSetGoodsListener(AnnouncementListItem hallDynamicInfo) {
         ((MainActivity)this.getActivity()).requestSetGood(hallDynamicInfo.getAnnounid());
     }
+
+    @Override
+    public void hadTransferArticle(AnnouncementListItem hallDynamicInfo) {
+        ((MainActivity)this.getActivity()).requestTransferArticle(hallDynamicInfo.getAnnounid());
+    }
 }

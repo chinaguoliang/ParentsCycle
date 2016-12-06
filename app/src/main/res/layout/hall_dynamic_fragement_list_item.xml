@@ -28,6 +28,15 @@
             >
 
             <ImageView
+                android:id="@+id/hall_dynamic_frgement_list_item_ann_share_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@color/gray_bg"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/ann_share_icon" />
+
+            <ImageView
                 android:id="@+id/hall_dynamic_frgement_list_item_user_icon_iv"
                 android:layout_width="50dp"
                 android:layout_height="50dp"

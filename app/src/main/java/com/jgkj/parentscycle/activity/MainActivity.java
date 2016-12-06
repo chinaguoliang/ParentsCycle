@@ -22,6 +22,7 @@ import com.android.volley.toolbox.Volley;
 import com.jgkj.parentscycle.R;
 import com.jgkj.parentscycle.bean.AnnouncementListInfo;
 import com.jgkj.parentscycle.bean.AnnouncementListItem;
+import com.jgkj.parentscycle.bean.ArticleTransferInfo;
 import com.jgkj.parentscycle.bean.BabyDocumentListInfo;
 import com.jgkj.parentscycle.bean.SetLikeInfo;
 import com.jgkj.parentscycle.bean.VideoControlTImeItem;
@@ -35,6 +36,7 @@ import com.jgkj.parentscycle.global.ActivityResultCode;
 import com.jgkj.parentscycle.global.BgGlobal;
 import com.jgkj.parentscycle.global.ConfigPara;
 import com.jgkj.parentscycle.json.AnnouncementListPaser;
+import com.jgkj.parentscycle.json.ArticleTransferInfoPaser;
 import com.jgkj.parentscycle.json.GetVideoControlTimeBySchoolIdPaser;
 import com.jgkj.parentscycle.json.ModifyPassByOldPassPaser;
 import com.jgkj.parentscycle.json.ResetPasswordPaser;
@@ -297,7 +299,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,N
             }
 
             ToastUtil.showToast(this, nbs.getMsg(), Toast.LENGTH_SHORT);
+        } else if (nbs.obj instanceof ArticleTransferInfo) {
+            if (nbs.isSuccess()) {
+            } else {
+            }
+            ToastUtil.showToast(this, nbs.getMsg(), Toast.LENGTH_SHORT);
         }
+
     }
 
     //公告列表
@@ -366,5 +374,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,N
         SetLikeInfoPaser lp = new SetLikeInfoPaser();
         NetRequest.getInstance().request(mQueue, this,
                 BgGlobal.SET_GOOD, requestData, lp);
+    }
+
+
+    public void requestTransferArticle(String id) {
+        showProgressDialog();
+        HashMap<String, String> requestData = new HashMap<String, String>();
+        requestData.put("wbid", id);
+        requestData.put("osid",UserInfo.loginInfo.getInfo().getTmpinfoid());
+        requestData.put("role",UserInfo.loginInfo.getRole().getRole());
+        requestData.put("attype","1"); // 1：公告 2、宝宝秀 3：父母圈
+        requestData.put("chennl","1"); // 所属类型 1：qq 2：微信 3：陌陌
+        ArticleTransferInfoPaser lp = new ArticleTransferInfoPaser();
+        NetRequest.getInstance().request(mQueue, this,
+                BgGlobal.PUBLIC_ARTICLE_DISTRIBUCTION, requestData, lp);
     }
 }

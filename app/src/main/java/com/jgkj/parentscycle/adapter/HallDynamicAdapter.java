@@ -22,6 +22,7 @@ public class HallDynamicAdapter extends BaseAdapter{
 
     public interface SetGoodsListener {
         public void hadSetGoodsListener(AnnouncementListItem hallDynamicInfo);
+        public void hadTransferArticle(AnnouncementListItem hallDynamicInfo);
     }
     private SetGoodsListener mSetGoodsListener;
     public void setGoodListener(SetGoodsListener listener) {
@@ -68,6 +69,7 @@ public class HallDynamicAdapter extends BaseAdapter{
             holder.contentTv = (TextView)convertView.findViewById(R.id.hall_dynamic_frgement_list_item_content_tv);
             holder.titleTv = (TextView)convertView.findViewById(R.id.hall_dynamic_frgement_list_item_title_tv);
             holder.setGoodTv = (TextView)convertView.findViewById(R.id.hall_dynamic_frgement_list_item_set_good_tv);
+            holder.shareIv = (ImageView)convertView.findViewById(R.id.hall_dynamic_frgement_list_item_ann_share_iv);
         } else {
             holder = (HallMainChannelViewHolder) convertView.getTag();
         }
@@ -85,6 +87,13 @@ public class HallDynamicAdapter extends BaseAdapter{
                 mSetGoodsListener.hadSetGoodsListener(hallDynamicInfo);
             }
         });
+
+        holder.shareIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSetGoodsListener.hadTransferArticle(hallDynamicInfo);
+            }
+        });
         return convertView;
     }
 
@@ -96,5 +105,6 @@ public class HallDynamicAdapter extends BaseAdapter{
         ImageView bigIconIv;
         TextView titleTv;
         TextView setGoodTv;
+        ImageView shareIv;
     }
 }
