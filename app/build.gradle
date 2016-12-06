@@ -23,8 +23,14 @@ android {
     }
     buildTypes {
         release {
+            applicationIdSuffix ".school"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            applicationIdSuffix ".school"
+            minifyEnabled false
         }
     }
 
