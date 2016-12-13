@@ -87,8 +87,8 @@ public class GrowthRecordActivity extends BaseActivity implements View.OnClickLi
     private void requestBabyGrowthList() {
         showProgressDialog();
         HashMap<String, String> requestData = new HashMap<String, String>();
-        requestData.put("rows","10");
-        requestData.put("page","1");
+        requestData.put("rows","1");
+        requestData.put("page","30");  //这里是服务器错误所以先这样调用了
         GrowthRecordInfoPaser lp = new GrowthRecordInfoPaser();
         NetRequest.getInstance().request(mQueue, this, BgGlobal.GET_BABY_GROWTH_RECORD_LIST, requestData, lp);
     }
