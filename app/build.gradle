@@ -12,7 +12,7 @@ android {
     signingConfigs {
         School {
             keyPassword '111111'
-            storeFile file('D:/pworkspace/ParentsCycle/keystore/school')
+            storeFile file('../keystore/school')
             storePassword '111111'
             keyAlias 'ParentsCycleSchool'
         }
