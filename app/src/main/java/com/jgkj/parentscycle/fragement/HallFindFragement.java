@@ -16,6 +16,7 @@ import com.jgkj.parentscycle.R;
 import com.jgkj.parentscycle.activity.GrowthRecordActivity;
 import com.jgkj.parentscycle.activity.MakeClassAddPersonActivity;
 import com.jgkj.parentscycle.activity.ParentsCycleActivity;
+import com.jgkj.parentscycle.activity.ParentsInfoListActivity;
 import com.jgkj.parentscycle.activity.SearchSchoolActivity;
 import com.jgkj.parentscycle.activity.SelectClassActivity;
 import com.jgkj.parentscycle.activity.VideoTImeControllActivity;
@@ -75,7 +76,7 @@ public class HallFindFragement extends Fragment {
                 } else if (position == 1) {
                     startActivity(new Intent(view.getContext(),GrowthRecordActivity.class));
                 } else if (position == 2) {
-                    startActivity(new Intent(view.getContext(),MakeClassAddPersonActivity.class));
+                    startActivity(new Intent(view.getContext(),ParentsInfoListActivity.class));
                 }
 //                else if (position == 3) {
 //                    startActivity(new Intent(view.getContext(),MakeClassAddPersonActivity.class));
