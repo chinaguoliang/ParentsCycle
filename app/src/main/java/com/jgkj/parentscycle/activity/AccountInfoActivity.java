@@ -399,10 +399,10 @@ public class AccountInfoActivity extends BaseActivity implements View.OnClickLis
     public void finishSlecct(int index) {
         List<String> dataList = mAccountInfoAdapter.getList();
         if (index == 1) {
-            dataList.set(2,"性别_男");
+            dataList.set(3,"性别_男");
             selSex = 1;
         } else if (index == 0) {
-            dataList.set(2,"性别_女");
+            dataList.set(3,"性别_女");
             selSex = 0;
         }
 

@@ -1,11 +1,19 @@
 package com.jgkj.parentscycle.widget;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jgkj.parentscycle.R;
+import com.jgkj.parentscycle.utils.UtilTools;
 
 /**
  * Created by chen on 16/8/22.
@@ -16,40 +24,34 @@ public class SexSelectDialog {
     }
 
     public static  void showSexSelectDialog(final Context context,final  SexSlectDialogFinish ssdf) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("请选择性别");
-        final String[] sex = {"女","男" };
-        //    设置一个单项选择下拉框
-        /**
-         * 第一个参数指定我们要显示的一组下拉单选框的数据集合
-         * 第二个参数代表索引，指定默认哪一个单选框被勾选上，1表示默认'女' 会被勾选上
-         * 第三个参数给每一个单选项绑定一个监听器
-         */
-        builder.setSingleChoiceItems(sex, 1, new DialogInterface.OnClickListener()
-        {
+        final Dialog dialog = new Dialog(context,R.style.DialogTheme);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View contentView = inflater.inflate(R.layout.sex_select_dialog,null);
+        dialog.setContentView(contentView);
+        TextView manTv = (TextView) contentView.findViewById(R.id.sex_select_dialog_man_tv);
+        TextView womanTv = (TextView) contentView.findViewById(R.id.sex_select_dialog_woman_tv);
+        manTv.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                Toast.makeText(context, "性别为：" + sex[which], Toast.LENGTH_SHORT).show();
-                ssdf.finishSlecct(which);
+            public void onClick(View v) {
+                ssdf.finishSlecct(1);
+                dialog.dismiss();
             }
         });
-        builder.setPositiveButton("确定", new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
 
-            }
-        });
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener()
-        {
+        womanTv.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-
+            public void onClick(View v) {
+                ssdf.finishSlecct(0);
+                dialog.dismiss();
             }
         });
-        builder.show();
+
+        WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+        params.gravity = Gravity.CENTER;
+        params.width = UtilTools.SCREEN_WIDTH - 60;
+        dialog.getWindow().setAttributes(params);
+        dialog.show();
+
     }
 }
