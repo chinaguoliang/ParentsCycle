@@ -72,10 +72,10 @@ public class MangementClassActivity extends BaseActivity implements View.OnClick
     }
 
     private void initViews() {
-        titleBg.setBackgroundColor(Color.WHITE);
-        titleTv.setTextColor(Color.BLACK);
+//        titleBg.setBackgroundColor(Color.WHITE);
+//        titleTv.setTextColor(Color.BLACK);
         titleTv.setText("班级管理");
-        rightTv.setTextColor(Color.BLACK);
+        //rightTv.setTextColor(Color.BLACK);
         rightTv.setText("提交");
         mExpandableListView.setGroupIndicator(null);
         mExpandableListView.setChildDivider(new BitmapDrawable());

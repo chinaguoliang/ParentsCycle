@@ -72,8 +72,8 @@ public class ManageTeachersListActivity extends BaseActivity implements View.OnC
     private void initViews() {
         rightTv.setVisibility(View.GONE);
         titleTv.setText("老师管理");
-        titleTv.setTextColor(Color.BLACK);
-        titleBg.setBackgroundColor(Color.WHITE);
+//        titleTv.setTextColor(Color.BLACK);
+//        titleBg.setBackgroundColor(Color.WHITE);
 
     }
 
