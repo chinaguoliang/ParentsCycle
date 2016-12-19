@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.jgkj.parentscycle.R;
 import com.jgkj.parentscycle.bean.CreateClassInfo;
 import com.jgkj.parentscycle.global.BgGlobal;
+import com.jgkj.parentscycle.global.ConfigPara;
 import com.jgkj.parentscycle.json.MakeClassPaser;
 import com.jgkj.parentscycle.json.TeacherInfoLIstPaser;
 import com.jgkj.parentscycle.net.NetBeanSuper;
@@ -119,7 +120,7 @@ public class MakeClassActivity extends BaseActivity implements NetListener,View.
     //建立班级
     private void requestCreateClass() {
         HashMap<String, String> requestData = new HashMap<String, String>();
-        requestData.put("schoolid", "1"); //暂时传1
+        requestData.put("schoolid", ConfigPara.SCHOOL_ID); //暂时传1
         requestData.put("classname", classNameStr);
         requestData.put("classadviser", classAdviserStr);
         ArrayList<String> ids = new ArrayList<String>();
