@@ -73,4 +73,12 @@ public class BgGlobal {
     public static final String QUERY_SCHOOL_LIST_BY_SCHOOL_NAME = "schoolMGController/querySchoolSerchList"; //学校查询列表
     public static final String PARENTS_LIST_INFO = "parentinfo/parentinfoList"; //家长信息列表
     public static final String PARENTS_INFO_AUDIT = "parentinfo/updateParentinfo"; //家长信息审核验证
+
+    public static final String TEACHER_INFO_MODIFY_OR_EXAMINE = "teacherinfo/updateTeacherinfo";//教师信息修改或者审核
+    public static final String PARENTS_INFO_LIST = "parentinfo/parentinfoList";//家长信息列表
+    public static final String TEACHER_EXAMINE = "parentinfo/updateParentinfo";//家长信息审核验证
+    public static final String BABY_JOIN_CLASS = "classBaby/save"; //宝宝加入班级
+    public static final String SCHOOL_LEADER_EXAMINE_TEACHER_JOIN_SHCOOL = "schoolTeacher/schoolTeacherUpdate";//园长审核老师加入学校
+    public static final String TEACHER_EXAMINE_STUDENT_JOIN_CLASS = "classBaby/update";//老师审核学生加入班级
+    public static final String SCHOOL_LEADER_EXAMINE_TEACHER_JOIN_CLASS = "classTeacher/verifyClassinfo";//园长审核老师加入班级
 }
