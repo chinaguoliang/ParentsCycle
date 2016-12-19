@@ -20,14 +20,17 @@ import com.jgkj.parentscycle.bean.ClassedAndTeachersListInfo;
 import com.jgkj.parentscycle.bean.ClassesAndTeachersListItemInfo;
 import com.jgkj.parentscycle.bean.SearchSchoolInfo;
 import com.jgkj.parentscycle.bean.SearchSchoolItemInfo;
+import com.jgkj.parentscycle.bean.TeacherJoinSchoolInfo;
 import com.jgkj.parentscycle.global.BgGlobal;
 import com.jgkj.parentscycle.global.ConfigPara;
 import com.jgkj.parentscycle.json.ClassedAndTeachersPaser;
 import com.jgkj.parentscycle.json.SearchSchoolInfoPaser;
 import com.jgkj.parentscycle.json.TeacherInfoLIstPaser;
+import com.jgkj.parentscycle.json.TeacherJoinSchoolInfoPaser;
 import com.jgkj.parentscycle.net.NetBeanSuper;
 import com.jgkj.parentscycle.net.NetListener;
 import com.jgkj.parentscycle.net.NetRequest;
+import com.jgkj.parentscycle.user.UserInfo;
 import com.jgkj.parentscycle.utils.ToastUtil;
 import com.jgkj.parentscycle.utils.UtilTools;
 
@@ -86,13 +89,13 @@ public class SearchSchoolActivity extends BaseActivity implements View.OnClickLi
     }
 
     //教师加入学校
-    private void requestParentsInfoExamine(String schoolId,String classId,String teacherId) {
+    private void requestTeacherJoinSchool(String schoolId,String classId) {
         showProgressDialog();
         HashMap<String, String> requestData = new HashMap<String, String>();
         requestData.put("schoolid",schoolId);
         requestData.put("classid",classId);
-        requestData.put("teacherids",teacherId);
-        SearchSchoolInfoPaser lp = new SearchSchoolInfoPaser();
+        requestData.put("teacherids", UserInfo.loginInfo.getInfo().getTmpinfoid());
+        TeacherJoinSchoolInfoPaser lp = new TeacherJoinSchoolInfoPaser();
         NetRequest.getInstance().request(mQueue, this, BgGlobal.CLASS_TEACHER_MANGEMENT, requestData, lp);
     }
 
@@ -107,7 +110,7 @@ public class SearchSchoolActivity extends BaseActivity implements View.OnClickLi
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 ClassesAndTeachersListItemInfo cali = childDataString.get(groupPosition).get(childPosition);
-                showWhetherAddSchoolDialog();
+                showWhetherAddSchoolDialog(cali);
                 return false;
             }
         });
@@ -148,7 +151,7 @@ public class SearchSchoolActivity extends BaseActivity implements View.OnClickLi
         NetRequest.getInstance().request(mQueue, this, BgGlobal.SEARCH_CLASS_LIST_BY_SCHOOL_ID, requestData, lp);
     }
 
-    private void showWhetherAddSchoolDialog() {
+    private void showWhetherAddSchoolDialog(final ClassesAndTeachersListItemInfo cali) {
         addSchoolDialog = new Dialog(this, R.style.DialogTheme);
         addSchoolDialog.getWindow().setWindowAnimations(R.style.dialogWindowAnim);
         View contentView = LayoutInflater.from(this).inflate(R.layout.add_school_dialog, null);
@@ -165,7 +168,8 @@ public class SearchSchoolActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void onClick(View v) {
                 addSchoolDialog.dismiss();
-                showTipDialog();
+
+                requestTeacherJoinSchool(cali.getSchoolid(),cali.getClassid());
             }
         });
 
@@ -229,6 +233,12 @@ public class SearchSchoolActivity extends BaseActivity implements View.OnClickLi
 //                    expandLv.performItemClick(expandLv.getAdapter().getView(currentGroupId,null,null),currentGroupId,expandLv.getAdapter().getItemId(currentGroupId));
 //                }
                 mAddSchoolExpanLvAdapter.notifyDataSetChanged();
+            } else {
+                ToastUtil.showToast(this,nbs.getMsg(), Toast.LENGTH_SHORT);
+            }
+        } else if (nbs.obj instanceof TeacherJoinSchoolInfo) {
+            if (nbs.isSuccess()) {
+                showTipDialog();
             } else {
                 ToastUtil.showToast(this,nbs.getMsg(), Toast.LENGTH_SHORT);
             }
