@@ -110,9 +110,9 @@ public class AccountInfoActivity extends BaseActivity implements View.OnClickLis
         mContentLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 4) {
+                if (position == 5) {
                     showDateDialog();
-                } else if (position == 6) {
+                } else if (position == 7) {
                     //帐号信息
                     startActivity(new Intent(AccountInfoActivity.this,AccountSafeActivity.class));
                 } else if (position == 3) {
@@ -121,15 +121,6 @@ public class AccountInfoActivity extends BaseActivity implements View.OnClickLis
                     //选择班级
                     requestClassListBySchoolId();
                 }
-
-
-//                if (position == 0 || position == 1 || position == 3) {
-//                    View contentEt = view.findViewById(R.id.hall_mine_fragment_lv_item_content_et);
-//                    contentNameTv.setVisibility(View.GONE);
-//                    contentEt.setVisibility(View.VISIBLE);
-////                    holder.contentEt.setVisibility(View.VISIBLE);
-////                    holder.conentNameTv.setVisibility(View.GONE);
-//                }
             }
         });
 
@@ -178,9 +169,9 @@ public class AccountInfoActivity extends BaseActivity implements View.OnClickLis
         List<String> dataList = mAccountInfoAdapter.getList();
         String date = year + "-" + (monthOfYear + 1) + "-" +dayOfMonth;
 //        dataList.remove(4);
-        dataList.set(4,"出生日期_" + date);
+        dataList.set(5,"出生日期_" + date);
         selBirthday = date;
-        mAccountInfoAdapter.getData().put(4,date);
+        mAccountInfoAdapter.getData().put(5,date);
         mAccountInfoAdapter.notifyDataSetChanged();
     }
 

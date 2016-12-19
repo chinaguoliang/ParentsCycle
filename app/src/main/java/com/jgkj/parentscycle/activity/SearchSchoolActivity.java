@@ -72,7 +72,6 @@ public class SearchSchoolActivity extends BaseActivity implements View.OnClickLi
         ButterKnife.bind(this);
         expandLv.setGroupIndicator(null);
         expandLv.setChildDivider(new BitmapDrawable());
-
     }
 
     //学校查询列表
@@ -84,6 +83,17 @@ public class SearchSchoolActivity extends BaseActivity implements View.OnClickLi
         requestData.put("schoolname",searchContentStr);
         SearchSchoolInfoPaser lp = new SearchSchoolInfoPaser();
         NetRequest.getInstance().request(mQueue, this, BgGlobal.QUERY_SCHOOL_LIST_BY_SCHOOL_NAME, requestData, lp);
+    }
+
+    //教师加入学校
+    private void requestParentsInfoExamine(String schoolId,String classId,String teacherId) {
+        showProgressDialog();
+        HashMap<String, String> requestData = new HashMap<String, String>();
+        requestData.put("schoolid",schoolId);
+        requestData.put("classid",classId);
+        requestData.put("teacherids",teacherId);
+        SearchSchoolInfoPaser lp = new SearchSchoolInfoPaser();
+        NetRequest.getInstance().request(mQueue, this, BgGlobal.CLASS_TEACHER_MANGEMENT, requestData, lp);
     }
 
 

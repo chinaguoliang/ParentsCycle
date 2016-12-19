@@ -102,7 +102,7 @@ public class AccountInfoAdapter extends BaseAdapter {
 
 
 
-        if (position == 2 || position == 4 || position == 6 || position == 7 || position == 8 || position == 9) {
+        if (position == 3 || position == 5 || position == 7) {
             holder.contentEt.setVisibility(View.GONE);
             holder.contentTv.setVisibility(View.VISIBLE);
         } else {
