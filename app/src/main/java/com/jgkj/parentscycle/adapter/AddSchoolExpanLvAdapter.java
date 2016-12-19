@@ -65,7 +65,7 @@ public class AddSchoolExpanLvAdapter extends BaseExpandableListAdapter {
             childHolder = (ChildHolder) convertView.getTag();
         }
 
-        childHolder.childText.setText(childMap.get(groupPosition).get(childPosition).getClassadviser());
+        childHolder.childText.setText(childMap.get(groupPosition).get(childPosition).getClassname());
         return convertView;
     }
 

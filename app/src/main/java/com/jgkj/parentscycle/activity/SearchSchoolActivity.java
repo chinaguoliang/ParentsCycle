@@ -112,13 +112,13 @@ public class SearchSchoolActivity extends BaseActivity implements View.OnClickLi
             }
         });
 
-        expandLv.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+
+        expandLv.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             @Override
-            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+            public void onGroupExpand(int groupPosition) {
                 currentGroupId = groupPosition;
                 SearchSchoolItemInfo searchSchoolItemInfo = (SearchSchoolItemInfo)mAddSchoolExpanLvAdapter.getGroup(groupPosition);
                 requestClassListBySchoolId(searchSchoolItemInfo.getSchoolid());
-                return false;
             }
         });
     }
@@ -224,9 +224,11 @@ public class SearchSchoolActivity extends BaseActivity implements View.OnClickLi
 //                initListView(tii.getDataList());
 
                 childDataString.put(currentGroupId,tii.getDataList());
-//                expandLv.performItemClick(expandLv.getAdapter().getView(currentGroupId,null,null),currentGroupId,expandLv.getAdapter().getItemId(currentGroupId));
-//
 
+//                if (!expandLv.isGroupExpanded(currentGroupId)) {
+//                    expandLv.performItemClick(expandLv.getAdapter().getView(currentGroupId,null,null),currentGroupId,expandLv.getAdapter().getItemId(currentGroupId));
+//                }
+                mAddSchoolExpanLvAdapter.notifyDataSetChanged();
             } else {
                 ToastUtil.showToast(this,nbs.getMsg(), Toast.LENGTH_SHORT);
             }
