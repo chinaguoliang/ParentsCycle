@@ -48,8 +48,8 @@ public class AccountSafeActivity extends BaseActivity implements View.OnClickLis
     private void initViews() {
         rightTv.setVisibility(View.GONE);
         titleTv.setText("帐号安全");
-        titleTv.setTextColor(Color.BLACK);
-        titleBg.setBackgroundColor(Color.WHITE);
+        //titleTv.setTextColor(Color.BLACK);
+        //titleBg.setBackgroundColor(Color.WHITE);
     }
 
     @OnClick({R.id.baby_document_activity_back_iv,R.id.account_safe_activity_modify_pass_rel,R.id.account_safe_activity_phone_rel})
