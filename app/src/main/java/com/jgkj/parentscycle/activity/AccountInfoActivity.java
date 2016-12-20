@@ -342,7 +342,7 @@ public class AccountInfoActivity extends BaseActivity implements View.OnClickLis
         requestData.put("kbwx",mTeacherInfoListInfo.getKbwx()); //1: 是  0：否
         requestData.put("kbqq",mTeacherInfoListInfo.getKbqq());
 
-        String nationality = data.get(3);
+        String nationality = data.get(2);
         if (TextUtils.isEmpty(nationality)) {
             requestData.put("nationality",mTeacherInfoListInfo.getNationality());
         } else {
@@ -357,7 +357,7 @@ public class AccountInfoActivity extends BaseActivity implements View.OnClickLis
 
         requestData.put("onthejob",mTeacherInfoListInfo.getOnthejob()); // 1:在职  0： 离职
         requestData.put("permissions",mTeacherInfoListInfo.getPermissions());
-        String phone = data.get(5);
+        String phone = data.get(6);
         if (TextUtils.isEmpty(phone)) {
             requestData.put("phone",mTeacherInfoListInfo.getPhone());
         } else {
@@ -406,7 +406,7 @@ public class AccountInfoActivity extends BaseActivity implements View.OnClickLis
             selSex = 0;
         }
 
-        mAccountInfoAdapter.getData().put(2,index + "");
+        mAccountInfoAdapter.getData().put(3,index + "");
         mAccountInfoAdapter.notifyDataSetChanged();
     }
 }
