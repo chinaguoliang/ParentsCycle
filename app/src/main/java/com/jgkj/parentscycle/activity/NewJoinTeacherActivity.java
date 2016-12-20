@@ -92,7 +92,7 @@ public class NewJoinTeacherActivity extends BaseActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if (v == backIv) {
-            setIdsData();
+            //setIdsData();
             finish();
         } else if (v == confirmBtn) {
             setIdsData();
@@ -103,6 +103,7 @@ public class NewJoinTeacherActivity extends BaseActivity implements View.OnClick
         showProgressDialog();
         HashMap<String, String> requestData = new HashMap<String, String>();
         requestData.put("schoolid", ConfigPara.SCHOOL_ID);
+        requestData.put("iseffectives","1");
         TeacherListPaser lp = new TeacherListPaser();
         NetRequest.getInstance().request(mQueue, this, BgGlobal.TEACHERS_LIST, requestData, lp);
     }

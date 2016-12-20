@@ -20,6 +20,7 @@ import com.jgkj.parentscycle.bean.AuditParentsInfo;
 import com.jgkj.parentscycle.bean.ParentsListInfo;
 import com.jgkj.parentscycle.bean.TeachersListInfo;
 import com.jgkj.parentscycle.global.BgGlobal;
+import com.jgkj.parentscycle.global.ConfigPara;
 import com.jgkj.parentscycle.json.AuditParentsInfoPaser;
 import com.jgkj.parentscycle.json.ParentsListInfoPaser;
 import com.jgkj.parentscycle.json.TeacherListPaser;
@@ -70,6 +71,8 @@ public class ParentsInfoListActivity extends BaseActivity implements View.OnClic
         showProgressDialog();
         HashMap<String, String> requestData = new HashMap<String, String>();
         ParentsListInfoPaser lp = new ParentsListInfoPaser();
+        requestData.put("schoolid", ConfigPara.SCHOOL_ID);
+        requestData.put("iseffectives","1");
         NetRequest.getInstance().request(mQueue, this, BgGlobal.PARENTS_LIST_INFO, requestData, lp);
     }
 
@@ -85,7 +88,7 @@ public class ParentsInfoListActivity extends BaseActivity implements View.OnClic
     @Override
     public void onClick(View v) {
         if (v == backIv) {
-            setIdsData();
+            //setIdsData();
             finish();
         } else if (v == confirmBtn) {
             setIdsData();
