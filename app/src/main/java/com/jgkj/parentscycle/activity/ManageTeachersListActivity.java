@@ -17,6 +17,7 @@ import com.jgkj.parentscycle.adapter.SelectTeacherListAdapter;
 import com.jgkj.parentscycle.bean.TeachersListInfo;
 import com.jgkj.parentscycle.bean.TeachersListItemInfo;
 import com.jgkj.parentscycle.global.BgGlobal;
+import com.jgkj.parentscycle.global.ConfigPara;
 import com.jgkj.parentscycle.json.TeacherListPaser;
 import com.jgkj.parentscycle.net.NetBeanSuper;
 import com.jgkj.parentscycle.net.NetListener;
@@ -63,7 +64,7 @@ public class ManageTeachersListActivity extends BaseActivity implements View.OnC
     private void requestTeachersList() {
             showProgressDialog();
             HashMap<String, String> requestData = new HashMap<String, String>();
-            requestData.put("schoolid", "1");
+            requestData.put("schoolid", ConfigPara.SCHOOL_ID);
             TeacherListPaser lp = new TeacherListPaser();
             NetRequest.getInstance().request(mQueue, this, BgGlobal.TEACHERS_LIST, requestData, lp);
     }

@@ -28,6 +28,7 @@ import com.jgkj.parentscycle.bean.GetSevenCowTokenInfo;
 import com.jgkj.parentscycle.bean.ParentsPerfectInfo;
 import com.jgkj.parentscycle.bean.PerfectInfoInfo;
 import com.jgkj.parentscycle.global.BgGlobal;
+import com.jgkj.parentscycle.global.ConfigPara;
 import com.jgkj.parentscycle.json.GetSevenCowTokenPaser;
 import com.jgkj.parentscycle.json.GetVerifyPhoneNumPaser;
 import com.jgkj.parentscycle.json.ParentsPerfectInfoPaser;
@@ -205,7 +206,7 @@ public class PerfectInformationActivity extends BaseActivity implements View.OnC
         requestData.put("teachername","哈哈");
         requestData.put("teachersex","0");
         requestData.put("tmpinfoid", UserInfo.loginInfo.getRole().getId());
-        requestData.put("schoolid", "1");  //暂时传1
+        requestData.put("schoolid", ConfigPara.SCHOOL_ID);  //暂时传1
 
 //        requestData.put("schoolid","1");
 //        requestData.put("babyname",data.get(6));

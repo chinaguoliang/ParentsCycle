@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.jgkj.parentscycle.R;
 import com.jgkj.parentscycle.bean.TeacherInfoListInfo;
 import com.jgkj.parentscycle.global.BgGlobal;
+import com.jgkj.parentscycle.global.ConfigPara;
 import com.jgkj.parentscycle.json.TeacherInfoLIstPaser;
 import com.jgkj.parentscycle.net.NetBeanSuper;
 import com.jgkj.parentscycle.net.NetListener;
@@ -100,7 +101,7 @@ public class SchoolInfoActivity extends BaseActivity implements NetListener,View
         showProgressDialog();
         HashMap<String, String> requestData = new HashMap<String, String>();
         requestData.put("tmpinfoid", UserInfo.loginInfo.getRole().getId());
-        requestData.put("schoolid", "1");  //暂时传1
+        requestData.put("schoolid", ConfigPara.SCHOOL_ID);  //暂时传1
         TeacherInfoLIstPaser lp = new TeacherInfoLIstPaser();
         NetRequest.getInstance().request(mQueue, this, BgGlobal.TEACHER_INFO_LIST, requestData, lp);
     }
@@ -120,7 +121,7 @@ public class SchoolInfoActivity extends BaseActivity implements NetListener,View
     //班级教师管理
     private void requestClassTeacherMangement() {
         HashMap<String, String> requestData = new HashMap<String, String>();
-        requestData.put("schoolid", "1");
+        requestData.put("schoolid", ConfigPara.SCHOOL_ID);
         requestData.put("classid", "6");
         requestData.put("classname", "apple class");
         ArrayList <String> ids = new ArrayList<String>();
@@ -153,7 +154,7 @@ public class SchoolInfoActivity extends BaseActivity implements NetListener,View
     //按学校ID 查询班级列表 （发布选择班级展示）
     private void requestClassListBySchoolId() {
         HashMap<String, String> requestData = new HashMap<String, String>();
-        requestData.put("schoolid", "1");
+        requestData.put("schoolid", ConfigPara.SCHOOL_ID);
         TeacherInfoLIstPaser lp = new TeacherInfoLIstPaser();
         NetRequest.getInstance().request(mQueue, this, BgGlobal.SEARCH_CLASS_LIST_BY_SCHOOL_ID, requestData, lp);
     }

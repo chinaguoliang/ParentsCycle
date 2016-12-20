@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.jgkj.parentscycle.R;
 import com.jgkj.parentscycle.activity.GrowthRecordActivity;
 import com.jgkj.parentscycle.activity.MakeClassAddPersonActivity;
+import com.jgkj.parentscycle.activity.NewJoinTeacherActivity;
 import com.jgkj.parentscycle.activity.ParentsCycleActivity;
 import com.jgkj.parentscycle.activity.ParentsInfoListActivity;
 import com.jgkj.parentscycle.activity.SearchSchoolActivity;
@@ -61,7 +62,7 @@ public class HallFindFragement extends Fragment {
         dataList.add("父母圈");
         dataList.add("成长纪录");
         dataList.add("新加入家长");
-//        dataList.add("新加入老师");
+        dataList.add("新加入老师");
         dataList.add("加入学校");
         dataList.add("咨询");
         //dataList.add("视频时段控制");
@@ -77,15 +78,15 @@ public class HallFindFragement extends Fragment {
                     startActivity(new Intent(view.getContext(),GrowthRecordActivity.class));
                 } else if (position == 2) {
                     startActivity(new Intent(view.getContext(),ParentsInfoListActivity.class));
+                } else if (position == 3) {
+                    //新加入老师
+                    startActivity(new Intent(view.getContext(),NewJoinTeacherActivity.class));
                 }
-//                else if (position == 3) {
-//                    startActivity(new Intent(view.getContext(),MakeClassAddPersonActivity.class));
-//                }
-                else if (position == 3) {
+                else if (position == 4) {
                     startActivity(new Intent(view.getContext(),SearchSchoolActivity.class));
-                } else if (position == 4) {
-                    UtilTools.toChatModule(getContext());
                 } else if (position == 5) {
+                    UtilTools.toChatModule(getContext());
+                } else if (position == 6) {
                     startActivity(new Intent(view.getContext(),SelectClassActivity.class));
                 }
 

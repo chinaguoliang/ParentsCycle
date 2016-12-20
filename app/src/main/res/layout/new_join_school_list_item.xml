@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/new_join_school_activity_content_lv_item_user_icon_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:paddingBottom="10dp"
+            android:visibility="gone"
+            android:paddingTop="10dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/user_default_icon" />
+
+        <TextView
+            android:id="@+id/new_join_school_activity_content_lv_item_user_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/new_join_school_activity_content_lv_item_user_icon_iv"
+            android:layout_marginLeft="18dp"
+            android:text="1"
+            />
+
+        <ImageView
+            android:id="@+id/new_join_school_activity_content_lv_item_right_symble_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/right_symble"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
