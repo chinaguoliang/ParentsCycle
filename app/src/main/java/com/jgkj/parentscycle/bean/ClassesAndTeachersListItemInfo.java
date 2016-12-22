@@ -12,6 +12,15 @@ public class ClassesAndTeachersListItemInfo {
     String schoolid;
     String updatetime;
     String tmpinfoid;
+    boolean isSelected = false;
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 
     public boolean isQuery() {
         return isQuery;
